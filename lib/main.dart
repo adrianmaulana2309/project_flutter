@@ -11,11 +11,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Tutorial',
+      title: 'Finance Accounting System',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 13, 13, 120),
+        ),
       ),
-      home: const MyHomePage(title: 'Financial Accounting System'),
+      home: const MyHomePage(title: 'Finance Accounting System'),
     );
   }
 }
@@ -42,73 +44,133 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Wrap(
             alignment:
                 WrapAlignment.center, // Pusatkan tombol secara horizontal
-            spacing: 10,
-            runSpacing: 10,
+            spacing: 20, // Jarak horizontal antar elemen
+            runSpacing: 20, // Jarak vertikal antar baris
             children: <Widget>[
-              // Tombol General Ledger
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(fixedSize: Size(150, 40)),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const GeneralLedgerPage(),
+              // General Ledger
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/images/GL.jpeg',
+                    height: 150, // Ukuran gambar
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10), // Jarak antara gambar dan tombol
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const GeneralLedgerPage(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(150, 40),
                     ),
-                  );
-                },
-                child: const Text('General Ledger'),
+                    child: const Text('General Ledger'),
+                  ),
+                ],
               ),
 
-              // Tombol Cash and Bank
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(fixedSize: Size(150, 40)),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CashAndBankPage(),
+              // Cash and Bank
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/images/CASH.jpeg',
+                    height: 150,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CashAndBankPage(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(150, 40),
                     ),
-                  );
-                },
-                child: const Text('Cash and Bank'),
+                    child: const Text('Cash and Bank'),
+                  ),
+                ],
               ),
 
-              // Tombol Accounts Receivable (AR)
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(fixedSize: Size(150, 40)),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ARPage()),
-                  );
-                },
-                child: const Text('Accounts Receivable (AR)'),
-              ),
-
-              // Tombol Accounts Payable (AP)
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(fixedSize: Size(150, 40)),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const APPage()),
-                  );
-                },
-                child: const Text('Accounts Payable (AP)'),
-              ),
-
-              // Tombol Financial Report
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(fixedSize: Size(150, 40)),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const FinancialReportPage(),
+              // Accounts Receivable (AR)
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/images/AR.jpeg',
+                    height: 150,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ARPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(150, 40),
                     ),
-                  );
-                },
-                child: const Text('Financial Report'),
+                    child: const Text('Accounts Receivable (AR)'),
+                  ),
+                ],
+              ),
+
+              // Accounts Payable (AP)
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/images/AP.jpeg',
+                    height: 150,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const APPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(150, 40),
+                    ),
+                    child: const Text('Accounts Payable (AP)'),
+                  ),
+                ],
+              ),
+
+              // Financial Report
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/images/FR.jpeg',
+                    height: 150,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FinancialReportPage(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(150, 40),
+                    ),
+                    child: const Text('Financial Report (FR)'),
+                  ),
+                ],
               ),
             ],
           ),
@@ -126,7 +188,7 @@ class CashAndBankPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cash and Bank'),
+        title: const Text('Finance Accounting System'),
         backgroundColor: Colors.pinkAccent,
       ),
       body: Center(
@@ -139,10 +201,10 @@ class CashAndBankPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Kembali Ke Halaman Utama'),
-            ),
+            // ElevatedButton(
+            //   onPressed: () => Navigator.pop(context),
+            //   child: const Text('Kembali Ke Halaman Utama'),
+            // ),
           ],
         ),
       ),
@@ -158,8 +220,8 @@ class GeneralLedgerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('General Ledger'),
-        backgroundColor: Color.fromARGB(255, 31, 2, 251),
+        title: const Text('Finance Accounting System'),
+        backgroundColor: Color.fromARGB(255, 131, 120, 217),
       ),
       body: Center(
         child: ListView(
@@ -171,10 +233,10 @@ class GeneralLedgerPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Kembali Ke Halaman Utama'),
-            ),
+            // ElevatedButton(
+            //   onPressed: () => Navigator.pop(context),
+            //   child: const Text('Kembali Ke Halaman Utama'),
+            // ),
           ],
         ),
       ),
@@ -191,7 +253,7 @@ class ARPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Accounts Receivable (AR)'),
-        backgroundColor: Color.fromARGB(255, 31, 2, 251),
+        backgroundColor: Color.fromARGB(255, 92, 120, 94),
       ),
       body: Center(
         child: ListView(
@@ -203,10 +265,10 @@ class ARPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Kembali Ke Halaman Utama'),
-            ),
+            // ElevatedButton(
+            //   onPressed: () => Navigator.pop(context),
+            //   child: const Text('Kembali Ke Halaman Utama'),
+            // ),
           ],
         ),
       ),
@@ -223,7 +285,7 @@ class APPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Accounts Payable (AP)'),
-        backgroundColor: Color.fromARGB(255, 31, 2, 251),
+        backgroundColor: Color.fromARGB(255, 126, 141, 86),
       ),
       body: Center(
         child: ListView(
@@ -235,10 +297,10 @@ class APPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Kembali Ke Halaman Utama'),
-            ),
+            // ElevatedButton(
+            //   onPressed: () => Navigator.pop(context),
+            //   child: const Text('Kembali Ke Halaman Utama'),
+            // ),
           ],
         ),
       ),
@@ -255,7 +317,7 @@ class FinancialReportPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Financial Report'),
-        backgroundColor: Color.fromARGB(255, 31, 2, 251),
+        backgroundColor: Color.fromARGB(255, 152, 154, 168),
       ),
       body: Center(
         child: ListView(
@@ -267,10 +329,10 @@ class FinancialReportPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Kembali Ke Halaman Utama'),
-            ),
+            // ElevatedButton(
+            //   onPressed: () => Navigator.pop(context),
+            //   child: const Text('Kembali Ke Halaman Utama'),
+            // ),
           ],
         ),
       ),
